@@ -1,0 +1,21 @@
+{
+  "name": "exchange-rates-journey",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^11.2.14",
+    "@angular/core": "^11.2.14"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "main": "bundles/exchange-rates-journey.umd.js",
+  "module": "fesm2015/exchange-rates-journey.js",
+  "es2015": "fesm2015/exchange-rates-journey.js",
+  "esm2015": "esm2015/exchange-rates-journey.js",
+  "fesm2015": "fesm2015/exchange-rates-journey.js",
+  "typings": "exchange-rates-journey.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy. This is not allowed.\\nPlease delete and rebuild the package, without compiling with Ivy, before attempting to publish.\\n')\" && exit 1"
+  }
+}
