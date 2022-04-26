@@ -10,6 +10,13 @@ const routes: Routes = [
       )
   },
   {
+    path: 'rates',
+    loadChildren: () => 
+    import('./exchange-rates/exchange-rates-journey-bundle.module').then(
+      (m) => m.ExchangeRatesJourneyBundleModule
+    )
+  },
+  {
     path: '**',
     redirectTo: 'accounts'
   }
