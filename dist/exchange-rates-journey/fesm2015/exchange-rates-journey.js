@@ -1,4 +1,5 @@
 import { ɵɵdefineInjectable, ɵsetClassMetadata, Injectable, ɵɵdefineComponent, ɵɵelementStart, ɵɵtext, ɵɵelementEnd, Component, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule } from '@angular/core';
+import { provideRoutes } from '@angular/router';
 
 class ExchangeRatesJourneyService {
     constructor() { }
@@ -36,7 +37,28 @@ ExchangeRatesJourneyComponent.ɵcmp = ɵɵdefineComponent({ type: ExchangeRatesJ
             }]
     }], function () { return []; }, null); })();
 
+const defaultRoute = {
+    path: '',
+    component: ExchangeRatesJourneyComponent,
+    children: [
+        {
+            path: '',
+            redirectTo: 'history',
+            pathMatch: 'full'
+        },
+        {
+            path: 'history',
+            component: ExchangeRatesJourneyComponent
+        }
+    ]
+};
 class ExchangeRatesJourneyModule {
+    static forRoot(data = { route: defaultRoute }) {
+        return {
+            ngModule: ExchangeRatesJourneyModule,
+            providers: [provideRoutes([data.route])],
+        };
+    }
 }
 ExchangeRatesJourneyModule.ɵfac = function ExchangeRatesJourneyModule_Factory(t) { return new (t || ExchangeRatesJourneyModule)(); };
 ExchangeRatesJourneyModule.ɵmod = ɵɵdefineNgModule({ type: ExchangeRatesJourneyModule });
