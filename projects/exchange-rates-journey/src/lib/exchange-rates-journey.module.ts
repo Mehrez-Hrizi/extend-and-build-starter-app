@@ -1,7 +1,22 @@
 import { NgModule } from '@angular/core';
 import { ExchangeRatesJourneyComponent } from './exchange-rates-journey.component';
+import { provideRoutes, Route, RouterModule } from '@angular/router';
 
-
+const defaultRoute: Route = {  
+  path: '',
+  component: ExchangeRatesJourneyComponent,
+  children: [
+    {
+      path: '',
+      redirectTo: 'history',
+      pathMatch: 'full'
+    },
+    {
+      path: 'history',
+      component: ExchangeRatesJourneyComponent
+    }
+  ]
+};
 
 @NgModule({
   declarations: [
@@ -13,4 +28,11 @@ import { ExchangeRatesJourneyComponent } from './exchange-rates-journey.componen
     ExchangeRatesJourneyComponent
   ]
 })
-export class ExchangeRatesJourneyModule { }
+export class ExchangeRatesJourneyModule { 
+  static forRoot(data: { [key: string]: unknown; route: Route } = { route: defaultRoute }) { //<-- ADD STATIC METHOD
+    return {
+      ngModule: ExchangeRatesJourneyModule,
+      providers: [provideRoutes([data.route])],
+    };
+  }
+}
