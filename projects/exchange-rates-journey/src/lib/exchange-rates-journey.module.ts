@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ExchangeRatesJourneyComponent } from './exchange-rates-journey.component';
 import { provideRoutes, Route, RouterModule } from '@angular/router';
+import { ExchangeRatesJourneyService } from 'exchange-rates-journey';
 
 const defaultRoute: Route = {  
   path: '',
@@ -26,6 +27,9 @@ const defaultRoute: Route = {
   ],
   exports: [
     ExchangeRatesJourneyComponent
+  ],
+  providers: [
+    ExchangeRatesJourneyService
   ]
 })
 export class ExchangeRatesJourneyModule { 
