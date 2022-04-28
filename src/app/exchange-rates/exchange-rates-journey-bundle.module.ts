@@ -1,8 +1,19 @@
-import { NgModule } from "@angular/core";
-import { ExchangeRatesJourneyModule } from "exchange-rates-journey";
+import { NgModule, Provider } from "@angular/core";
+import { 
+    ExchangeRatesJourneyModule,
+    ExchangeRateConfiguration,
+    ExchangeRateConfigurationToken 
+} from "exchange-rates-journey";
 
 @NgModule({
     imports: [ExchangeRatesJourneyModule.forRoot()],
-    providers: []
+    providers: [
+        {
+            provide: ExchangeRateConfigurationToken,
+            useValue: <Partial<ExchangeRateConfiguration>>{
+                headerTitle: "Exchange Rates History"
+              },
+        }
+    ]
 })
 export class ExchangeRatesJourneyBundleModule {}
