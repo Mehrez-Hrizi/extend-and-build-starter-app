@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { ExchangeRatesJourneyService } from './exchange-rates-journey.service';
+import { Observable, of, Subscription, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'lib-exchange-rates-journey',
   template: `
-    <p>
-      exchange-rates-journey works!
-    </p>
+    <h3>
+      {{headerTitle}}
+    </h3>
   `,
   styles: [
   ]
 })
 export class ExchangeRatesJourneyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private exchangeRatesJourneyService: ExchangeRatesJourneyService) { }
+  headerTitle: string = this.exchangeRatesJourneyService.serviceConfig.headerTitle;
 
   ngOnInit(): void {
   }
