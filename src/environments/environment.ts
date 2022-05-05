@@ -6,12 +6,14 @@ import { Provider } from '@angular/core';
 
 import { createMocksInterceptor } from '@backbase/foundation-ang/data-http';
 import { TransactionClientHttpServiceMocksProvider } from '@backbase/data-ang/transactions';
-import { ProductSummaryHttpServiceMocksProvider} from '@backbase/data-ang/arrangements'
+import { ProductSummaryHttpServiceMocksProvider} from '@backbase/data-ang/arrangements';
+import { ExchangeHttpServiceMocksProvider } from 'exchange-rates-api';
 
 export const mockProviders = [
     createMocksInterceptor(),
     ProductSummaryHttpServiceMocksProvider,
-    TransactionClientHttpServiceMocksProvider
+    TransactionClientHttpServiceMocksProvider,
+    ExchangeHttpServiceMocksProvider
 ];
 
 export const environment = {
