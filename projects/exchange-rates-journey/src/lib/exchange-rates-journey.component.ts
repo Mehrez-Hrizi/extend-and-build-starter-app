@@ -8,8 +8,36 @@ import { ExchangeRateItem } from './exchange-rates-journey.service';
   selector: 'lib-exchange-rates-journey',
   template: `
     <h3>
-      {{headerTitle}}
+      {{headerTitle}}: {{sourceCurrencyLabel}} > {{targetCurrencyLabel}}
     </h3>
+    <div class="table-responsive" *ngIf="exchangeRates$ | async as exchangeRates">
+      <table class="table table-hover" [bbTable]="exchangeRates">
+          <thead>
+          <tr class="align-middle">
+              <th class="align-middle" scope="col">
+              <span class="th-content">
+                  Date
+              </span>
+              </th>
+              <th class="align-middle" scope="col">
+              <span class="th-content">
+                  Exchange Rate
+              </span>
+              </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let exchangeRate of exchangeRates;">
+              <td>
+              {{ exchangeRate?.time | date }}
+              </td>
+              <td>
+              {{ exchangeRate?.rate | number }}
+              </td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
   `,
   styles: [
   ]
