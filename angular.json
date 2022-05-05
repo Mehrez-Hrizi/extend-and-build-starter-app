@@ -166,6 +166,46 @@
           }
         }
       }
+    },
+    "exchange-rates-api": {
+      "projectType": "library",
+      "root": "projects/exchange-rates-api",
+      "sourceRoot": "projects/exchange-rates-api/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/exchange-rates-api/tsconfig.lib.json",
+            "project": "projects/exchange-rates-api/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/exchange-rates-api/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/exchange-rates-api/src/test.ts",
+            "tsConfig": "projects/exchange-rates-api/tsconfig.spec.json",
+            "karmaConfig": "projects/exchange-rates-api/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/exchange-rates-api/tsconfig.lib.json",
+              "projects/exchange-rates-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "journey-training-app"

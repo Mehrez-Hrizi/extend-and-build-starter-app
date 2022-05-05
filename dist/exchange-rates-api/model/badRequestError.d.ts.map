@@ -1,0 +1,1 @@
+{"version":3,"file":"badRequestError.d.ts","sourceRoot":"","sources":["../../../projects/exchange-rates-api/model/badRequestError.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;GAUG;AAEH,OAAO,EAAE,SAAS,EAAE,MAAM,aAAa,CAAC;AAGxC,MAAM,WAAW,eAAe;IAC5B;;OAEG;IACH,CAAC,SAAS,CAAC,EAAE,MAAM,CAAC;IACpB;;OAEG;IACH,CAAC,QAAQ,CAAC,CAAC,EAAE,KAAK,CAAC,SAAS,CAAC,CAAC;CACjC"}

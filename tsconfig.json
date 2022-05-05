@@ -6,6 +6,10 @@
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "paths": {
+      "exchange-rates-api": [
+        "dist/exchange-rates-api/exchange-rates-api",
+        "dist/exchange-rates-api"
+      ],
       "exchange-rates-journey": [
         "dist/exchange-rates-journey/exchange-rates-journey",
         "dist/exchange-rates-journey"

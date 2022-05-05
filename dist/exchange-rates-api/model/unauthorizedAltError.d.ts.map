@@ -1,0 +1,1 @@
+{"version":3,"file":"unauthorizedAltError.d.ts","sourceRoot":"","sources":["../../../projects/exchange-rates-api/model/unauthorizedAltError.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;GAUG;AAEH,OAAO,EAAE,SAAS,EAAE,MAAM,aAAa,CAAC;AAGxC,MAAM,WAAW,oBAAoB;IACjC;;OAEG;IACH,CAAC,SAAS,CAAC,CAAC,EAAE,MAAM,CAAC;IACrB;;OAEG;IACH,CAAC,QAAQ,CAAC,CAAC,EAAE,KAAK,CAAC,SAAS,CAAC,CAAC;CACjC"}

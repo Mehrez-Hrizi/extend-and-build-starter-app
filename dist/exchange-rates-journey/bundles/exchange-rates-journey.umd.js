@@ -4,12 +4,18 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['exchange-rates-journey'] = {}, global.ng.core, global.ng.router));
 }(this, (function (exports, i0, router) { 'use strict';
 
+    var ExchangeRateConfigurationToken = new i0.InjectionToken('ExchangeRateServiceConfig injection token');
+    var DEFAULT_EXCHANGE_RATE_CONFIG = {
+        headerTitle: 'Welcome!',
+    };
     var ExchangeRatesJourneyService = /** @class */ (function () {
-        function ExchangeRatesJourneyService() {
+        function ExchangeRatesJourneyService(serviceConfig) {
+            this.serviceConfig = Object.assign(Object.assign({}, DEFAULT_EXCHANGE_RATE_CONFIG), serviceConfig);
+            console.log('Service configuration:', this.serviceConfig);
         }
         return ExchangeRatesJourneyService;
     }());
-    ExchangeRatesJourneyService.ɵfac = function ExchangeRatesJourneyService_Factory(t) { return new (t || ExchangeRatesJourneyService)(); };
+    ExchangeRatesJourneyService.ɵfac = function ExchangeRatesJourneyService_Factory(t) { return new (t || ExchangeRatesJourneyService)(i0.ɵɵinject(ExchangeRateConfigurationToken, 8)); };
     ExchangeRatesJourneyService.ɵprov = i0.ɵɵdefineInjectable({ token: ExchangeRatesJourneyService, factory: ExchangeRatesJourneyService.ɵfac, providedIn: 'root' });
     (function () {
         (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(ExchangeRatesJourneyService, [{
@@ -17,22 +23,35 @@
                 args: [{
                         providedIn: 'root'
                     }]
-            }], function () { return []; }, null);
+            }], function () {
+            return [{ type: undefined, decorators: [{
+                            type: i0.Optional
+                        }, {
+                            type: i0.Inject,
+                            args: [ExchangeRateConfigurationToken]
+                        }] }];
+        }, null);
     })();
 
     var ExchangeRatesJourneyComponent = /** @class */ (function () {
-        function ExchangeRatesJourneyComponent() {
+        function ExchangeRatesJourneyComponent(exchangeRatesJourneyService) {
+            this.exchangeRatesJourneyService = exchangeRatesJourneyService;
+            this.headerTitle = this.exchangeRatesJourneyService.serviceConfig.headerTitle;
         }
         ExchangeRatesJourneyComponent.prototype.ngOnInit = function () {
         };
         return ExchangeRatesJourneyComponent;
     }());
-    ExchangeRatesJourneyComponent.ɵfac = function ExchangeRatesJourneyComponent_Factory(t) { return new (t || ExchangeRatesJourneyComponent)(); };
-    ExchangeRatesJourneyComponent.ɵcmp = i0.ɵɵdefineComponent({ type: ExchangeRatesJourneyComponent, selectors: [["lib-exchange-rates-journey"]], decls: 2, vars: 0, template: function ExchangeRatesJourneyComponent_Template(rf, ctx) {
+    ExchangeRatesJourneyComponent.ɵfac = function ExchangeRatesJourneyComponent_Factory(t) { return new (t || ExchangeRatesJourneyComponent)(i0.ɵɵdirectiveInject(ExchangeRatesJourneyService)); };
+    ExchangeRatesJourneyComponent.ɵcmp = i0.ɵɵdefineComponent({ type: ExchangeRatesJourneyComponent, selectors: [["lib-exchange-rates-journey"]], decls: 2, vars: 1, template: function ExchangeRatesJourneyComponent_Template(rf, ctx) {
             if (rf & 1) {
-                i0.ɵɵelementStart(0, "p");
-                i0.ɵɵtext(1, " exchange-rates-journey works! ");
+                i0.ɵɵelementStart(0, "h3");
+                i0.ɵɵtext(1);
                 i0.ɵɵelementEnd();
+            }
+            if (rf & 2) {
+                i0.ɵɵadvance(1);
+                i0.ɵɵtextInterpolate1(" ", ctx.headerTitle, " ");
             }
         }, encapsulation: 2 });
     (function () {
@@ -40,10 +59,10 @@
                 type: i0.Component,
                 args: [{
                         selector: 'lib-exchange-rates-journey',
-                        template: "\n    <p>\n      exchange-rates-journey works!\n    </p>\n  ",
+                        template: "\n    <h3>\n      {{headerTitle}}\n    </h3>\n  ",
                         styles: []
                     }]
-            }], function () { return []; }, null);
+            }], function () { return [{ type: ExchangeRatesJourneyService }]; }, null);
     })();
 
     var defaultRoute = {
@@ -75,7 +94,9 @@
     }());
     ExchangeRatesJourneyModule.ɵfac = function ExchangeRatesJourneyModule_Factory(t) { return new (t || ExchangeRatesJourneyModule)(); };
     ExchangeRatesJourneyModule.ɵmod = i0.ɵɵdefineNgModule({ type: ExchangeRatesJourneyModule });
-    ExchangeRatesJourneyModule.ɵinj = i0.ɵɵdefineInjector({ imports: [[]] });
+    ExchangeRatesJourneyModule.ɵinj = i0.ɵɵdefineInjector({ providers: [
+            ExchangeRatesJourneyService
+        ], imports: [[]] });
     (function () { (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(ExchangeRatesJourneyModule, { declarations: [ExchangeRatesJourneyComponent], exports: [ExchangeRatesJourneyComponent] }); })();
     (function () {
         (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(ExchangeRatesJourneyModule, [{
@@ -87,6 +108,9 @@
                         imports: [],
                         exports: [
                             ExchangeRatesJourneyComponent
+                        ],
+                        providers: [
+                            ExchangeRatesJourneyService
                         ]
                     }]
             }], null, null);
@@ -100,6 +124,8 @@
      * Generated bundle index. Do not edit.
      */
 
+    exports.DEFAULT_EXCHANGE_RATE_CONFIG = DEFAULT_EXCHANGE_RATE_CONFIG;
+    exports.ExchangeRateConfigurationToken = ExchangeRateConfigurationToken;
     exports.ExchangeRatesJourneyComponent = ExchangeRatesJourneyComponent;
     exports.ExchangeRatesJourneyModule = ExchangeRatesJourneyModule;
     exports.ExchangeRatesJourneyService = ExchangeRatesJourneyService;
