@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { ExchangeRatesJourneyComponent } from './exchange-rates-journey.component';
 import { provideRoutes, Route, RouterModule } from '@angular/router';
 import { ExchangeRatesJourneyService } from './exchange-rates-journey.service';
+import { CommonModule } from '@angular/common';
+import { TableModule } from '@backbase/ui-ang';
 
 const defaultRoute: Route = {  
   path: '',
@@ -24,6 +26,8 @@ const defaultRoute: Route = {
     ExchangeRatesJourneyComponent
   ],
   imports: [
+    CommonModule,
+    TableModule
   ],
   exports: [
     ExchangeRatesJourneyComponent
